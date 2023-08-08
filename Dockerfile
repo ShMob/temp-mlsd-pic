@@ -9,6 +9,12 @@ RUN curl http://nginx.org/keys/nginx_signing.key | apt-key add -
 RUN apt-get update && \
 	apt-get install -y -q nginx
 
+RUN wget -O init-deb.sh https://www.linode.com/docs/assets/660-init-deb.sh
+RUN mv init-deb.sh /etc/init.d/nginx
+RUN chmod +x /etc/init.d/nginx
+RUN /usr/sbin/update-rc.d -f nginx defaults
+
+RUN mkdir -p /usr/share/nginx/html
 COPY ./front-end /usr/share/nginx/html
 
 RUN pip install gdown
