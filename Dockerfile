@@ -3,6 +3,10 @@ WORKDIR /app
 RUN pip install gdown
 RUN gdown --id 1ASv40otDT8YdSp71D-8zh3XU3EtoEngR
 RUN apt-get update && \
+    apt-get install -y -q curl gnupg2
+RUN curl http://nginx.org/keys/nginx_signing.key | apt-key add -
+
+RUN apt-get update && \
 	apt-get install -y -q nginx
 COPY ./front-end /usr/share/nginx/html
 RUN pip install Pillow
@@ -16,4 +20,4 @@ RUN pip install transformers==4.29.2
 RUN pip install tqdm
 COPY ./docker-image-files .
 EXPOSE 8000 443 80
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "&&", "nginx", "-g", "daemon off;"]
