@@ -2,7 +2,8 @@ FROM python:3.10
 WORKDIR /app
 RUN pip install gdown
 RUN gdown --id 1ASv40otDT8YdSp71D-8zh3XU3EtoEngR
-RUN apt-get install -y -q nginx
+RUN apt-get update && \
+	apt-get install -y -q nginx
 COPY ./front-end /usr/share/nginx/html
 RUN pip install Pillow
 RUN pip install fastapi
