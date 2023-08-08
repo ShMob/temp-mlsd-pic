@@ -1,14 +1,19 @@
 FROM python:3.10
 WORKDIR /app
-RUN pip install gdown
-RUN gdown --id 1ASv40otDT8YdSp71D-8zh3XU3EtoEngR
+
+RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
 RUN apt-get update && \
     apt-get install -y -q curl gnupg2
 RUN curl http://nginx.org/keys/nginx_signing.key | apt-key add -
 
 RUN apt-get update && \
 	apt-get install -y -q nginx
+
 COPY ./front-end /usr/share/nginx/html
+
+RUN pip install gdown
+RUN gdown --id 1ASv40otDT8YdSp71D-8zh3XU3EtoEngR
+
 RUN pip install Pillow
 RUN pip install fastapi
 RUN pip install torch --index-url https://download.pytorch.org/whl/cpu
