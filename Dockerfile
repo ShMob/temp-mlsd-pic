@@ -2,7 +2,7 @@ FROM python:3.10
 WORKDIR /app
 
 RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
-RUN echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 RUN apt-get update && \
     apt-get install -y -q curl gnupg2
 RUN curl http://nginx.org/keys/nginx_signing.key | apt-key add -
