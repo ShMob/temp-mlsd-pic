@@ -33,4 +33,4 @@ RUN pip install transformers==4.29.2
 RUN pip install tqdm
 COPY ./docker-image-files .
 EXPOSE 8000 443 80
-ENTRYPOINT ["RUNLEVEL=1", "apt-get", "install", "-y", "-q", "nginx", "&&", "cp", "-a", "/app/front-end/.", "/usr/share/nginx/html/", "&&", "nginx", "-g", "daemon off;", "&&", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["RUNLEVEL=1", "apt-get", "install", "-y", "-q", "nginx", "&&", "cp", "-a", "/app/front-end/.", "/usr/share/nginx/html/", "&&", "nginx", "-g", "daemon off;", "&&", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
