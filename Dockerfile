@@ -9,6 +9,7 @@ RUN curl http://nginx.org/keys/nginx_signing.key | apt-key add -
 RUN apt-get update && \
 	apt-get install -y -q nginx
 
+copy ./nginx.conf /etc/nginx/nginx.conf
 COPY ./front-end /usr/share/nginx/html
 
 RUN pip install gdown
