@@ -14,7 +14,8 @@ COPY ./front-end /usr/share/nginx/html
 
 RUN pip install gdown
 RUN gdown --id 1ASv40otDT8YdSp71D-8zh3XU3EtoEngR
-
+RUN pip install mlflow
+RUN pip install psutil
 RUN pip install Pillow
 RUN pip install fastapi
 RUN pip install torch --index-url https://download.pytorch.org/whl/cpu
@@ -28,5 +29,5 @@ COPY ./docker-image-files .
 
 ADD start.sh /
 RUN chmod +x /start.sh
-EXPOSE 8000 443 80
+EXPOSE 8000 443 80 5000
 CMD ["/start.sh"]
