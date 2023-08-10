@@ -35,6 +35,7 @@ prefix_size = 768
 mapping_type = 'transformer'
 
 mapping_type = {'mlp': MappingType.MLP, 'transformer': MappingType.Transformer}[mapping_type]
+print("Before predictor.py")
 predictor = Predictor(model_weights_path, mapping_type=mapping_type,clip_length=prefix_length_clip, num_layers=num_layers, prefix_length=prefix_length, prefix_size=prefix_size)
 
 # model = efficientnet_b0(pretrained=True)
@@ -45,6 +46,7 @@ def model_predict(image, predictor):
 
 @app.post("/predict")
 def predict(image: UploadFile = File(...)):
+    print("predicting...")
     image = Image.open(image.file)
     image = np.array(image.convert('RGB'))
     # reading the image With PIL.image

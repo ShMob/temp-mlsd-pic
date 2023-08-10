@@ -28,8 +28,11 @@ class Predictor:
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         print("the device is", self.device)
         self.clip_model = CLIPVisionModel.from_pretrained('SajjadAyoubi/clip-fa-vision').to(self.device)
+        print("clip model downloaded!")
         self.preprocess = CLIPFeatureExtractor.from_pretrained("openai/clip-vit-base-patch32")
+        print("clip feature extractor downloaded!")
         self.tokenizer = AutoTokenizer.from_pretrained('bolbolzaban/gpt2-persian')
+        print("GPT2 downloaded!")
 
         self.prefix_length = prefix_length
 
@@ -41,6 +44,7 @@ class Predictor:
             self.model = model
         else:
             self.model = training_model.to(self.device)
+        print("ready to take requests!")
 
     def predict_with_img_embeddings(self, img_emb, use_beam_search=True):
         """Run a single prediction on the model"""
