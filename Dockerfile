@@ -14,7 +14,7 @@ COPY ./front-end /usr/share/nginx/html
 
 RUN pip install gdown
 RUN gdown --id 1ASv40otDT8YdSp71D-8zh3XU3EtoEngR
-RUN pip install mlflow
+RUN pip install mlflow==2.4.0
 RUN pip install psutil
 RUN pip install Pillow
 RUN pip install fastapi
