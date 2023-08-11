@@ -9,11 +9,6 @@ function uploadImage() {
       fetch('http://127.0.0.1:8000/predict', {
         method: 'POST',
         body: formData,
-        headers: {
-          "Access-Control-Allow-Headers" : "Content-Type",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
-      },
       })
         .then(response => response.json())
         .then(data => {
