@@ -1,4 +1,6 @@
 # main.py
+import os
+os.environ['TRANSFORMERS_CACHE'] = '/var/lib/data/'
 from fastapi import FastAPI
 from fastapi import UploadFile , File
 from torchvision.models import efficientnet_b0
@@ -30,7 +32,7 @@ class MappingType(Enum):
     MLP = 'mlp'
     Transformer = 'transformer'
 
-model_weights_path = 'prefix_only_10_8_10-009.pt'
+model_weights_path = '/var/lib/data/prefix_only_10_8_10-009.pt'
 prefix_length_clip = 10
 num_layers = 8
 prefix_length = 10

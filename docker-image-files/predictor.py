@@ -27,11 +27,11 @@ class Predictor:
         # self.device = torch.device("cuda")
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
         print("the device is", self.device)
-        self.clip_model = CLIPVisionModel.from_pretrained('SajjadAyoubi/clip-fa-vision').to(self.device)
+        self.clip_model = CLIPVisionModel.from_pretrained('SajjadAyoubi/clip-fa-vision', cache_dir='/var/lib/data/').to(self.device)
         print("clip model downloaded!")
-        self.preprocess = CLIPFeatureExtractor.from_pretrained("openai/clip-vit-base-patch32")
+        self.preprocess = CLIPFeatureExtractor.from_pretrained("openai/clip-vit-base-patch32", cache_dir='/var/lib/data/')
         print("clip feature extractor downloaded!")
-        self.tokenizer = AutoTokenizer.from_pretrained('bolbolzaban/gpt2-persian')
+        self.tokenizer = AutoTokenizer.from_pretrained('bolbolzaban/gpt2-persian', cache_dir='/var/lib/data/')
         print("GPT2 downloaded!")
 
         self.prefix_length = prefix_length

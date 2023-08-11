@@ -14,6 +14,7 @@ COPY ./front-end /usr/share/nginx/html
 
 RUN pip install gdown
 RUN gdown --id 1ASv40otDT8YdSp71D-8zh3XU3EtoEngR
+RUN mv prefix_only_10_8_10-009.pt /var/lib/data/prefix_only_10_8_10-009.pt
 RUN pip install mlflow==2.4.0
 RUN pip install psutil
 RUN pip install Pillow

@@ -189,9 +189,9 @@ class ClipCaptionModel(nn.Module):
         #     self.gpt = GPT2LMHeadModel.from_pretrained("gpt2")
         # else:
         print("1.1")
-        self.vision_encoder = CLIPVisionModel.from_pretrained('SajjadAyoubi/clip-fa-vision')
+        self.vision_encoder = CLIPVisionModel.from_pretrained('SajjadAyoubi/clip-fa-vision', cache_dir='/var/lib/data/')
         print("1.2")
-        self.gpt = GPT2LMHeadModel.from_pretrained('bolbolzaban/gpt2-persian')
+        self.gpt = GPT2LMHeadModel.from_pretrained('bolbolzaban/gpt2-persian', cache_dir='/var/lib/data/')
         print("1.3")
         self.gpt_embedding_size = self.gpt.transformer.wte.weight.shape[1]
         print("1.4")
