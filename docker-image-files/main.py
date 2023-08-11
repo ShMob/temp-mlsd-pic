@@ -46,7 +46,7 @@ predictor = Predictor(model_weights_path, mapping_type=mapping_type,clip_length=
 # model = efficientnet_b0(pretrained=True)
 # model.eval()
 # MLflow configuration
-# mlflow.set_tracking_uri("http://mlflow-server:5000")
+mlflow.set_tracking_uri("http://mlflow.mlsd-pic.svc:7000")
 
 
 def model_predict(image, predictor):
