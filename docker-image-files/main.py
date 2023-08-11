@@ -95,7 +95,7 @@ def predict(image: UploadFile = File(...)):
 #     # Preprocessing logic
 #     tensor = transform(image).unsqueeze(0)
 #     return tensor
-
+print("after method definitions!")
 
 if __name__ == "__main__":
     import uvicorn

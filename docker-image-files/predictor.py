@@ -37,11 +37,15 @@ class Predictor:
         self.prefix_length = prefix_length
 
         if not training_model:
+            print("1")
             model = ClipCaptionModel(self.prefix_length,clip_length, prefix_size, num_layers, mapping_type)
+            print("2")
             model.load_state_dict(torch.load(model_weights_path, map_location=CPU))
+            print("3")
             model = model.eval()
             model = model.to(self.device)
             self.model = model
+            print("4")
         else:
             self.model = training_model.to(self.device)
         print("ready to take requests!")
