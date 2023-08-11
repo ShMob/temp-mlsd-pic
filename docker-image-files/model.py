@@ -154,9 +154,13 @@ class TransformerMapper(nn.Module):
 
     def __init__(self, dim_clip: int, dim_embedding: int, prefix_length: int, clip_length: int, num_layers: int = 8):
         super(TransformerMapper, self).__init__()
+        print("1.4.1")
         self.clip_length = clip_length
+        print("1.4.2")
         self.transformer = Transformer(dim_embedding, 8, num_layers)
+        print("1.4.3")
         self.linear = nn.Linear(dim_clip, clip_length * dim_embedding)
+        print("1.4.4")
         self.prefix_const = nn.Parameter(torch.randn(prefix_length, dim_embedding), requires_grad=True)
 
 
@@ -184,15 +188,20 @@ class ClipCaptionModel(nn.Module):
         # if is_eng:
         #     self.gpt = GPT2LMHeadModel.from_pretrained("gpt2")
         # else:
+        print("1.1")
         self.vision_encoder = CLIPVisionModel.from_pretrained('SajjadAyoubi/clip-fa-vision')
+        print("1.2")
         self.gpt = GPT2LMHeadModel.from_pretrained('bolbolzaban/gpt2-persian')
+        print("1.3")
         self.gpt_embedding_size = self.gpt.transformer.wte.weight.shape[1]
+        print("1.4")
         if mapping_type == MappingType.MLP:
             self.clip_project = MLP((prefix_size, (self.gpt_embedding_size * prefix_length) // 2,
                                      self.gpt_embedding_size * prefix_length))
         else:
             self.clip_project = TransformerMapper(prefix_size, self.gpt_embedding_size, prefix_length,
                                                                      clip_length, num_layers)
+        print("1.5")
 
 
 class ClipCaptionPrefix(ClipCaptionModel):
