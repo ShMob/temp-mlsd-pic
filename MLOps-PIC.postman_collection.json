@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "80fa0193-775a-4f10-a692-fc769c712633",
+		"name": "MLOps-PIC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "https://mlsd-pic.darkube.app/predict",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/D:/pics/SE media/5db500abe00828c483ef2f0e1c89292e.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://mlsd-pic.darkube.app/predict",
+					"protocol": "https",
+					"host": [
+						"mlsd-pic",
+						"darkube",
+						"app"
+					],
+					"path": [
+						"predict"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
