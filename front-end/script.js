@@ -6,7 +6,7 @@ function uploadImage() {
       var formData = new FormData();
       formData.append('image', file);
   
-      fetch('http://127.0.0.1:8000/predict', {
+      fetch('http://pic.mlsd-pic.svc:8000/predict', {
         method: 'POST',
         body: formData,
       })
