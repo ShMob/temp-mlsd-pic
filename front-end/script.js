@@ -6,7 +6,7 @@ function uploadImage() {
       var formData = new FormData();
       formData.append('image', file);
   
-      fetch('http://pic.mlsd-pic.svc:8000/predict', {
+      fetch('https://mlsd-pic.darkube.app/predict', {
         method: 'POST',
         body: formData,
       })
